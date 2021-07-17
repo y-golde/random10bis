@@ -1,19 +1,19 @@
 version: '3.3'
 services:
-    api:
-        container_name: 'api'
+    rnd10bis-api:
+        container_name: 'rnd10bis-api'
         build: './Server'
         ports:
             - '9000:9000'
         networks:
             - routertest
-    client:
-        container_name: 'client'
+    rnd10bis-client:
+        container_name: 'rnd10bis-client'
         build: './Client'
         ports:
             - 80:80
         depends_on:
-            - 'api'
+            - 'rnd10bis-api'
         networks:
             - routertest
 networks:
