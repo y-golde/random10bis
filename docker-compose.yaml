@@ -1,0 +1,21 @@
+version: '3.3'
+services:
+    api:
+        container_name: 'api'
+        build: './Server'
+        ports:
+            - '9000:9000'
+        networks:
+            - routertest
+    client:
+        container_name: 'client'
+        build: './Client'
+        ports:
+            - 80:80
+        depends_on:
+            - 'api'
+        networks:
+            - routertest
+networks:
+    routertest:
+        driver: bridge
