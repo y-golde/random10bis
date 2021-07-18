@@ -2,7 +2,7 @@
     import axios from 'axios';
     import { onMount } from 'svelte';
 
-    import { Menu } from './Types/Menu';
+    import type Menu from './Types/Menu';
     import MenuComponent from './Components/Menu/Menu.svelte';
 
     let menu: Menu;
@@ -22,7 +22,7 @@
 </script>
 
 <h1>תן בי(ס)</h1>
-{console.log(menu)}
+
 {#if menu}
     <MenuComponent menu="{menu}" />
 {/if}

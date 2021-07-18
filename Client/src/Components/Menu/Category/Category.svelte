@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Category } from '../../../Types/Menu';
+    import type Category from '../../../Types/Category';
     export let category: Category;
 </script>
 

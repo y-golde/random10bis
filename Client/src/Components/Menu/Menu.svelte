@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Menu } from '../../Types/Menu';
+    import type Menu from '../../Types/Menu';
     import Category from './Category/Category.svelte';
 
     export let menu: Menu;
