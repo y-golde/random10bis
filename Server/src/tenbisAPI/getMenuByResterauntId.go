@@ -1,51 +1,39 @@
 package tenbisAPI
 
 import (
-	"random10bis/src/entities"
 	"random10bis/src/util"
 )
 
-type menuAPIResponse struct {
+type MenuAPIResponse struct {
 	CategoriesList []category `json:"categoriesList"`
 }
 
 type category struct {
+	Name string `json:"categoryName"`
+	Desc string `json:"categoryDesc"`
 	DishList     []dish `json:"dishList"` 
 }
 
 type dish struct {
-	DishName            string `json:"dishName"`
-	IsPopularDish       bool `json:"isPopularDish"`
-	DishPopularityScore int `json:"dishPopularityScore"`
+	Name                string   `json:"dishName"`
+	IsPopularDish       bool     `json:"isPopularDish"`
+	PopularityScore     int      `json:"dishPopularityScore"`
+	Price               float32  `json:"dishPrice"`
+	Desctiption         string   `json:"dishDescription"`
 }
 
 const tenbisEndpoint = "https://tenbis-static.azureedge.net/restaurant-menu/"
 
-func GetMenuByRestaurauntId(restaurauntId string) (entities.Menu, error) {
+func GetMenuByRestaurauntId(restaurauntId string) (*MenuAPIResponse, error) {
 	requestURL := tenbisEndpoint + restaurauntId + "_he" // TODO: change to var
 
-	menuApi := new(menuAPIResponse)
+	menuApi := new(MenuAPIResponse)
 	err := util.GetJson(requestURL, menuApi)
 	if err != nil {
-		return entities.Menu{}, err
+		return &MenuAPIResponse{}, err
 	}
 
-	formattedMenu := formatMenuFromAPI(menuApi);
+	//formattedMenu := formatMenuFromAPI(menuApi);
 
-	return formattedMenu, nil;
-}
-
-func formatMenuFromAPI(menuFromApi *menuAPIResponse) entities.Menu {
-	var dishes []string
-
-	categories := menuFromApi.CategoriesList; 
-
-	for _, category := range categories {
-		for _, dish := range category.DishList {
-			
-			dishes = append(dishes, dish.DishName)
-		}	
-	}
-
-	return entities.Menu{ DishNames: dishes }
+	return menuApi, nil;
 }
