@@ -4,6 +4,7 @@ interface Dish {
     dishPopularityScore: number;
     dishPrice: number;
     dishDescription: string;
+    id?: number;
 }
 
 export default Dish;

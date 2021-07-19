@@ -1,6 +1,8 @@
 <script lang="ts">
-    import type Category from '../../../Types/Category';
     import Dish from './Dish/Dish.svelte';
+    import type Category from '../../../Types/Category';
+
+    export let selectedId: number;
     export let category: Category;
 
     const { categoryDesc, categoryName, dishList } = category;
@@ -14,7 +16,7 @@
 </div>
 <div class="container mx-auto rtl grid grid-cols-3 gap-4 flex-col-reverse my-2">
     {#each dishList as dish}
-        <Dish dish="{dish}" />
+        <Dish dish="{dish}" selectedId="{selectedId}" />
     {/each}
 </div>
 
