@@ -7,7 +7,7 @@
     const { categoriesList } = menu;
 </script>
 
-<div class="menu">
+<div class="menu container mx-auto">
     {#each categoriesList as category}
         <Category category="{category}" />
     {/each}

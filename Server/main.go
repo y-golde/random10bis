@@ -15,6 +15,7 @@ func main() {
 
 	e := echo.New()
 	
+	e.Use(middleware.CORS())
 	e.Use(middleware.Logger())
 
 	api.RootController(e)

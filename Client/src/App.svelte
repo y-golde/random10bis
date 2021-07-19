@@ -21,14 +21,14 @@
     });
 </script>
 
-<h1>תן בי(ס)</h1>
+<div class="text-4xl text-center">תן בי(ס)</div>
 
 {#if menu}
     <MenuComponent menu="{menu}" />
 {/if}
 
-<style>
-    h1 {
-        text-align: center;
-    }
+<style global lang="postcss">
+    @tailwind base;
+    @tailwind components;
+    @tailwind utilities;
 </style>
