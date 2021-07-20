@@ -5,11 +5,15 @@
     export let menu: Menu;
     export let selectedId: number;
 
-    const { categoriesList } = menu;
+    let categoriesList: Category[] = [];
+
+    $: {
+        categoriesList = menu.categoriesList as any as Category[];
+    }
 </script>
 
 <div class="menu container mx-auto">
-    {#each categoriesList as category}
-        <Category category="{category}" selectedId="{selectedId}" />
+    {#each categoriesList as cat}
+        <Category category="{cat}" selectedId="{selectedId}" />
     {/each}
 </div>
